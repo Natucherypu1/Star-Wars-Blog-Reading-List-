@@ -43,9 +43,10 @@ export const Home = () => {
         <div className="row data-row">
           
           {store.vehicles.map((item, index) => {
+            return (
             <div key={index} className="col">
               <VehiclesCard vehicle={item} index={index} category="vehicles" />
-            </div>;
+            </div>);
           })}
         </div>
       </div>
