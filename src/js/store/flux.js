@@ -62,44 +62,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             });},
   
 
-      // getCharacters: () => {
-      //   let newPeople = [];
-      //   fetch(backendUrl + "/people")
-      //     .then((res) => res.json())
-      //     .then((data) => {
-      //       for (let i = 0; data.results.length > i; i++) {
-      //         fetch(data.results[i].url)
-      //           .then((resp) => resp.json())
-      //           .then((info) => {
-      //             newPeople.push(info.result.properties);
-      //           })
-                
-      //           .catch((err) => console.log(err));
-      //       }
-      //     })
-      //     .then(() => setStore({ characters: newPeople }))
-      //     .catch((error) => console.log(error));
-      // },
-
-      // getPlanets: () => {
-      //   let newPlanets = [];
-      //   fetch(backendUrl + "/planets")
-      //     .then((res) => res.json())
-      //     .then((data) => {
-      //       for (let i = 0; data.results.length > i; i++) {
-      //         fetch(data.results[i].url)
-      //           .then((resp) => resp.json())
-      //           .then((info) => {
-      //             newPlanets.push(info.result.properties);
-      //           })
-                
-      //           .catch((err) => console.log(err));
-      //       }
-      //     })
-      //     .then(() => setStore({ planets: newPlanets }))
-      //     .catch((error) => console.log(error));
-      // },
-
       getVehicles: () => {
         fetch("https://swapi.dev/api/vehicles/")
         .then((response) => {
@@ -113,9 +75,17 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Looks like there was a problem: \n", error);
         });},
 
-      addFavorites: () => {},
+      addFavorites: (favorite) => {
+        let store = getStore()
+        store.favorites.push(favorite)
+        setStore(store)
+      },
 
-      deleteFavorites: () => {},
+      deleteFavorites: (index) => {
+        let store = getStore()
+        let newFavoriteList = store.favorites.filter((item, i) => index != i);
+        setStore({favorites:newFavoriteList})
+      },
     },
   };
 };

@@ -18,7 +18,7 @@ export const Home = () => {
           {store.characters.map((item, index) => {
             return (
               <div key={index} className="col">
-                <CharactersCard character={item} index={index} category="characters" />
+                <CharactersCard character={item} index={index} category="characters" addFavorites={actions.addFavorites} />
               </div>
             );
           })}
@@ -33,7 +33,7 @@ export const Home = () => {
           {store.planets.map((item, index) => {
             return (
               <div key={index} className="col">
-                <PlanetsCard planet={item} index={index} category="planet" />
+                <PlanetsCard planet={item} index={index} category="planet" addFavorites={actions.addFavorites} />
               </div>
             );
           })}
@@ -45,7 +45,7 @@ export const Home = () => {
           {store.vehicles.map((item, index) => {
             return (
             <div key={index} className="col">
-              <VehiclesCard vehicle={item} index={index} category="vehicles" />
+              <VehiclesCard vehicle={item} index={index} category="vehicles" addFavorites={actions.addFavorites} />
             </div>);
           })}
         </div>
