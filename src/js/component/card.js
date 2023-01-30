@@ -15,7 +15,7 @@ export const CharactersCard = (props) => {
         <p className="card-text">Hair Color: {props.character.hair_color}</p>
         <p className="card-text">Eye Color: {props.character.eye_color}</p>
         <div className="d-flex navbar">
-          <Link to={"/single"}>
+          <Link to={"/character/" + props.index}>
             <div className="btn btn-primary">Go somewhere</div>
           </Link>
           <div onClick={() => props.addFavorites(props.character)}>
